@@ -16,7 +16,7 @@ def print_qrCode(string_base64: str): #Essa buceta nao funciona
     :param tamanho: Resolução de redimensionamento (largura/altura em pixels).
                     O padrão 45 funciona bem na maioria dos terminais.
     """
-    tamanho = 45
+    tamanho = 80
     try:
         # 1. Remove o prefixo data:image/... se existir
         if "base64," in string_base64:
@@ -39,3 +39,7 @@ def print_qrCode(string_base64: str): #Essa buceta nao funciona
     except Exception as e:
         print(f"Erro ao processar o QR Code: {e}")
 
+def lerKey(caminho):
+    with open(caminho, "r") as arquivo:
+        key = arquivo.read()
+    return key

@@ -4,14 +4,13 @@ from models.filho import Conexao
 from service import arquive_service
 
 
-def criarConexao(nome, API_KEY,numero):
+def criarConexao(nome, API_KEY, numero):
 
-    url = "http://localhost:8080/instance/create"
+    url = "http://localhost:8081/instance/create"
 
     payload = {
         "instanceName": f"{nome}",
-        "integration": "WHATSAPP-BAILEYS",
-        "number": f"{numero}"
+        "integration": "WHATSAPP-BAILEYS"
     }
     headers = {
         "apikey": f"{API_KEY}",
@@ -22,13 +21,13 @@ def criarConexao(nome, API_KEY,numero):
 
     print(response.text)
 
-    filhos = [Conexao(nome, numero)] #lista dos caras
+    filhos = [Conexao(nome, numero)] #lista dos caba
 
     return filhos
 
 def conectarConexao(nome, API_KEY):
 
-    url = f"http://localhost:8080/instance/connect/{nome}"
+    url = f"http://localhost:8081/instance/connect/{nome}"
 
     headers = {"apikey": f"{API_KEY}"}
 
@@ -36,7 +35,8 @@ def conectarConexao(nome, API_KEY):
 
     dados = response.json()
     qrCode = dados["base64"]
-    arquive_service.print_qrCode(qrCode)
+    #arquive_service.print_qrCode(qrCode)
+    print(qrCode)
 
     escolha = input("Já leu o QR Code?\n1 - SIM /// 2 - NÃO\n")
     if escolha == "1":
@@ -48,7 +48,7 @@ def conectarConexao(nome, API_KEY):
 
 def deletarConexao(nome, API_KEY):
 
-    url = f"http://localhost:8080/instance/delete/{nome}"
+    url = f"http://localhost:8081/instance/delete/{nome}"
 
     headers = {"apikey": f"{API_KEY}"}
 

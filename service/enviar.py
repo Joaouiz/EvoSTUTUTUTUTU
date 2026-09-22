@@ -1,11 +1,11 @@
 import requests
 
 def enviarTexto(nome, numero, texto, API_KEY):
-    url = f"http://localhost:8080/message/sendText/{nome}"
+    url = f"http://localhost:8081/message/sendText/{nome}"
 
     payload = {
-        "number": f"{numero}",
-        "textMessage": {"text": f"{texto}"}
+        "number": numero,
+        "text": texto
     }
     headers = {
         "apikey": f"{API_KEY}",
