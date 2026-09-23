@@ -14,4 +14,4 @@ def enviarTexto(nome, numero, texto, API_KEY):
 
     response = requests.post(url, json=payload, headers=headers)
 
-    print(response.text)
+    return response
